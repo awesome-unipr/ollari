@@ -1,3 +1,5 @@
+[![Node.js CI](https://github.com/awesome-unipr/ollari/actions/workflows/main.yaml/badge.svg)](https://github.com/awesome-unipr/ollari/actions/workflows/main.yaml)
+
 # remote-keyless-system
 
 ## Requirements
@@ -39,3 +41,73 @@ mqttx sub -t 'vc2324/key-is-ok' -h 'localhost' -p 1883
 ```
 
 ## Utilizzo
+
+```bash
+npm install
+npm run build
+./vc
+```
+
+## Interfacce
+
+### Aggiunta utente
+
+```json
+{
+  "id": "ID_UNIVOCO_DA_ASSEGNARE",
+  "token": "PASSWORD"
+}
+```
+
+Che nel caso di ID non univoco ritorna:
+
+```json
+{
+  "message": "Driver already exists"
+}
+```
+
+### Sblocco
+
+```json
+{
+  "id": "ID_UTENTE",
+  "token": "password"
+}
+```
+
+Che ritorna:
+
+```json
+{
+  "message": "Success"
+}
+```
+
+Oppure:
+
+```json
+{
+  "message": "Invalid token"
+}
+```
+
+### Get last driver
+
+Richiesta **GET** a `localhost:8888/driver` che ritorna se non sono stati effettuati
+accessi al veicolo:
+
+```json
+{
+  "message": "No drivers found"
+}
+```
+
+Oppure l'ultimo utente (id e hash del token):
+
+```json
+{
+  "id": "1",
+  "token": "$argon2id$v=19$m=65536,t=2,p=1$Vyw45iCGw5+kOFDm9M9kVQH7m8zhgWwf9ebDGlt4PwA$/E8+HHpW25O/wrw70t8nfg49auI3KzGdHrvhUSan5JQ"
+}
+```

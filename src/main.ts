@@ -91,6 +91,13 @@ app.post("/add-key", async (req: Request, res: Response) => {
 
   driver.id = req.body.id;
   driver.token = await hashToken(req.body.token);
+
+  // check if driver already exists
+
+  if (drivers.find((driver) => driver.id === driver.id)) {
+    return res.status(409).json({ message: "Driver already exists" });
+  }
+
   drivers.push(driver);
 
   res.status(201).json(driver);
