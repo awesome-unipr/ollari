@@ -1,0 +1,7 @@
+POST http://localhost:8888/keyless
+Content-Type: application/json
+
+{
+  "id": "test",
+  "token": "test"
+}
