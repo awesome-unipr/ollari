@@ -37,3 +37,5 @@ Ascolto del topic per sviluppo locale:
 ```bash
 mqttx sub -t 'vc2324/key-is-ok' -h 'localhost' -p 1883
 ```
+
+## Utilizzo
