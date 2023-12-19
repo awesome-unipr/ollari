@@ -1,5 +1,7 @@
 # remote-keyless-system
 
+## Requirements
+
 Last (but not least), as anticipated, the vehicle is provided with a keyless
 system enabling the vehicle to start or to be stopped, given the presence of
 the right keycard in the neighborhood of the vehicle itself. Thus, a proper
@@ -17,3 +19,21 @@ the identity of the last driver opening the car, or the indication that someone
 Then, each time that a known driver is recognized by the proper OBU, the
 KeylessOBU should notify all the other OBUs publishing a proper message on the
 MQTT topic denoted as vc2324/key-is-ok
+
+## Testing
+
+### mqtt server
+
+Server mqtt installato per mac con homebrew con `brew install mosquitto` e avviato con:
+
+```bash
+mosquitto
+```
+
+### mqttx-cli
+
+Ascolto del topic per sviluppo locale:
+
+```bash
+mqttx sub -t 'vc2324/key-is-ok' -h 'localhost' -p 1883
+```

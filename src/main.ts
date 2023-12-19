@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { Client, connect } from "mqtt";
+import mqtt from "mqtt";
 
 const app = express();
 app.use(express.json());
@@ -16,7 +16,7 @@ interface UnverifiedDriver {
   id: string;
 }
 
-const client = connect(`mqtt://${MQTT_HOST}:${MQTT_PORT}`);
+const client = mqtt.connect(`mqtt://${MQTT_HOST}:${MQTT_PORT}`);
 
 client.on("connect", () => {
   console.log("connected");
